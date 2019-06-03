@@ -7,11 +7,19 @@ import (
 )
 
 func main() {
-	api := slack.New("xoxp-629997071139-630017779906-652868024880-2f136fcd4a9a644b662a583f62699c96")
-	user, err := api.GetUserByEmail("tantatorn.s@kmi.tl")
+
+	TOKEN := "xoxb-629997071139-642100825234-KOXW3j2IWEFzAe0tBJ7AaLRi"
+
+	api := slack.New(TOKEN)
+	attachment := slack.Attachment{
+		Pretext: "Test",
+		Text:    "Test Test Test",
+	}
+
+	channelID, timestamp, err := api.PostMessage("random", slack.MsgOptionText("Some text", false), slack.MsgOptionAttachments(attachment))
 	if err != nil {
 		fmt.Printf("%s\n", err)
 		return
 	}
-	fmt.Printf("ID: %s, Fullname: %s, Email: %s\n", user.ID, user.Profile.RealName, user.Profile.Email)
+	fmt.Printf("Message successfully sent to channel %s at %s\n", channelID, timestamp)
 }
