@@ -2,6 +2,7 @@ package main
 
 import (
 	"alfred-slackbot/api"
+	"fmt"
 )
 
 func main() {
@@ -10,5 +11,5 @@ func main() {
 
 	client.Init()
 	client.SendMessage("random", "test slack bot")
-
+	fmt.Println(client.GetChannels())
 }
