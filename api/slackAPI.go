@@ -2,6 +2,8 @@ package api
 
 import (
 	"fmt"
+	"log"
+	"os"
 
 	"github.com/nlopes/slack"
 )
@@ -14,7 +16,10 @@ type SlackClient struct {
 //Init slack api initialisation
 func (client *SlackClient) Init() {
 	TOKEN := "xoxb-629997071139-642100825234-lPA0L57gMA7SvH0FEqYnd1Jz"
-	client.API = slack.New(TOKEN)
+	client.API = slack.New(
+		TOKEN,
+		slack.OptionDebug(true),
+		slack.OptionLog(log.New(os.Stdout, "slack-bot: ", log.Lshortfile|log.LstdFlags)))
 }
 
 //SendMessage a method for sending a message
