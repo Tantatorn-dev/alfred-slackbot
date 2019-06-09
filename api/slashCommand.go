@@ -1,6 +1,7 @@
 package api
 
 import (
+	"alfred-slackbot/auth_tokens"
 	"fmt"
 	"net/http"
 
@@ -22,7 +23,7 @@ func slashCommandHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if !s.ValidateToken("kjD6xcFNX77d93VOxYbDu4sq") {
+	if !s.ValidateToken(auth_tokens.VerificationToken) {
 		w.WriteHeader(http.StatusUnauthorized)
 		return
 	}

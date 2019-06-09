@@ -1,6 +1,7 @@
 package api
 
 import (
+	"alfred-slackbot/auth_tokens"
 	"fmt"
 	"log"
 	"os"
@@ -15,7 +16,7 @@ type SlackClient struct {
 
 //Init slack api initialisation
 func (client *SlackClient) Init() {
-	TOKEN := "xoxb-629997071139-642100825234-lPA0L57gMA7SvH0FEqYnd1Jz"
+	TOKEN := auth_tokens.BotUserOAuthAccessToken
 	client.API = slack.New(
 		TOKEN,
 		slack.OptionDebug(true),
