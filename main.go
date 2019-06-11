@@ -1,16 +1,16 @@
 package main
 
 import (
-	"alfred-slackbot/api"
+	slack "alfred-slackbot/api/slackAPI"
+	slash "alfred-slackbot/api/slashCommand"
 	"alfred-slackbot/tokens"
 )
 
 func main() {
 	tokens.LoadEnv()
 
-	var client api.SlackClient
+	var client slack.SlackClient
 
 	client.Init()
-
-	client.SendMessage("random", "Hello")
+	slash.Serve()
 }

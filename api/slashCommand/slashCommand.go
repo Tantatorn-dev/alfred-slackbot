@@ -1,4 +1,4 @@
-package api
+package slashCommand
 
 import (
 	"alfred-slackbot/tokens"
