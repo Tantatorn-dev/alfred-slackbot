@@ -12,5 +12,5 @@ func main() {
 	var client slack.SlackClient
 
 	client.Init()
-	slash.Serve()
+	slash.Serve(&client)
 }
